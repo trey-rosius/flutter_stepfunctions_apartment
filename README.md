@@ -1,16 +1,15 @@
-# apartment_complex
+# Invoking a step functions workflow from mobile application built with Amplify and Flutter
 
-A new Flutter project.
+In the first part of this series, we built a step functions workflow for a simple apartment booking scenario using the AWS Step functions low code visual editor.
 
-## Getting Started
+In the second part of this series, we built the same workflow using CDK as IaC, Appsync and python, while invoking the step functions execution from a Lambda function.
 
-This project is a starting point for a Flutter application.
+In the third part of this series, we built the same workflow using SAM as IaC, Appsync and python, while invoking the step functions execution from a Lambda function.
 
-A few resources to get you started if this is your first Flutter project:
+In this post, we'll be invoking the step functions workflow we created above from a mobile app built with amplify and flutter.a
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Preview
+![alt text](https://raw.githubusercontent.com/trey-rosius/sam_stepfunctions/master/assets/images/screenshot.png)
+![alt text](https://raw.githubusercontent.com/trey-rosius/sam_stepfunctions/master/assets/images/mobile_to_step_functions.mov)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+

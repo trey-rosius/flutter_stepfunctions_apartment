@@ -13,15 +13,15 @@ class BookingScreen extends StatefulWidget {
 
 class _BookingScreenState extends State<BookingScreen> {
 
-  Future<void> addDemo(String id, String arn) async {
+  Future<void> startStepFunctions() async {
     try{
       String graphqlDoc =
           '''
           mutation add(\$id:ID!
-                        \$version:String!) {
-  addDemo(input: {id: \$id, version: \$version}) {
+                        \$arn:String!) {
+  addStepFunction(input: {id: \$id, arn: \$arn}) {
     id
-    version
+    arn
   }
 }
           
@@ -32,8 +32,8 @@ class _BookingScreenState extends State<BookingScreen> {
             document: graphqlDoc,
             apiName: "cdkMomoApi",
             variables: {
-              "id":"234234wdfsdf",
-              "version":"arn:aws:states:us-east-2:132260253285:stateMachine:MomoStateMachine"
+              "id":"mobile20983487234",
+              "arn":"arn:aws:states:us-east-2:132260253285:stateMachine:MomoStateMachine"
             }
 
       ));
@@ -55,26 +55,6 @@ class _BookingScreenState extends State<BookingScreen> {
     }
   }
 
-  void showInSnackBar(String value,BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 5.0),
-            child: Text(
-              value,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 17.0),
-            ),
-          ),
-        ],
-      ),
-      backgroundColor: Colors.redAccent,
-      duration: Duration(seconds: 1),
-    ));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +184,7 @@ class _BookingScreenState extends State<BookingScreen> {
       bottomNavigationBar: InkWell(
         onTap: (){
           print("add demo clicked");
-          addDemo("adsasd","asdasd");
+          startStepFunctions();
         },
         child: Container(
           height: 60,
