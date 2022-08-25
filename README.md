@@ -11,6 +11,8 @@ In this post, we'll be invoking the step functions workflow we created above fro
 ## Preview
 ![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/screenshot.png)
 
+
+
 ## Solutions Architecture
 ![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/sol_architecture.png)
 
@@ -26,3 +28,9 @@ This isn't a flutter tutorial, but rather a tutorial on how to invoke step funct
 So i'll assume you already know how to use Flutter.
 If you don't, don't worry. You can always start [here](https://docs.flutter.dev/get-started/install)
 
+## Setup FullStack Project
+### Create a new flutter application
+
+```
+flutter create amplified_todo
+```
