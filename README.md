@@ -10,6 +10,19 @@ In this post, we'll be invoking the step functions workflow we created above fro
 
 ## Preview
 ![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/screenshot.png)
-![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/mobile_to_step_functions.mov)
 
+## Solutions Architecture
+![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/sol_architecture.png)
+
+## Prerequisite
+In-order to properly follow through successfully with this tutorial, you'll need to have checked through these prequisites.
+- [Installed and Running Amplify CLI](https://docs.amplify.aws/cli/start/install/)
+- [Installed and Running Flutter Framework] (https://docs.flutter.dev/get-started/install)
+- Successfully completed and deployed any of the applications in PART 2 Or 3
+- Installed Android Studio or Vscode
+
+## NB
+This isn't a flutter tutorial, but rather a tutorial on how to invoke step functions from a flutter application.
+So i'll assume you already know how to use Flutter.
+If you don't, don't worry. You can always start [here](https://docs.flutter.dev/get-started/install)
 
