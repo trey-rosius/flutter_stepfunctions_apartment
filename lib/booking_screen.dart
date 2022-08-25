@@ -2,7 +2,6 @@ import 'package:apartment_complex/model/apartment_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:amplify_api/amplify_api.dart';
 class BookingScreen extends StatefulWidget {
   const BookingScreen(this.apartmentModel);
   final ApartmentModel apartmentModel;
