@@ -9,7 +9,7 @@ In the third part of this series, we built the same workflow using SAM as IaC, A
 In this post, we'll be invoking the step functions workflow we created above from a mobile app built with amplify and flutter.a
 
 ## Preview
-![alt text](https://raw.githubusercontent.com/trey-rosius/sam_stepfunctions/master/assets/images/screenshot.png)
-![alt text](https://raw.githubusercontent.com/trey-rosius/sam_stepfunctions/master/assets/images/mobile_to_step_functions.mov)
+![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/screenshot.png)
+![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/mobile_to_step_functions.mov)
 
 
