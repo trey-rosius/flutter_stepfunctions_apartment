@@ -12,7 +12,7 @@ class BookingScreen extends StatefulWidget {
 
 class _BookingScreenState extends State<BookingScreen> {
 
-  Future<void> startStepFunctions() async {
+  Future<void> startStepFunctions(String id, String arn) async {
     try{
       String graphqlDoc =
           '''
@@ -31,8 +31,8 @@ class _BookingScreenState extends State<BookingScreen> {
             document: graphqlDoc,
             apiName: "cdkMomoApi",
             variables: {
-              "id":"mobile20983487234",
-              "arn":"arn:aws:states:us-east-2:132260253285:stateMachine:MomoStateMachine"
+              "id":id,
+              "arn":arn
             }
 
       ));
@@ -183,7 +183,7 @@ class _BookingScreenState extends State<BookingScreen> {
       bottomNavigationBar: InkWell(
         onTap: (){
           print("add demo clicked");
-          startStepFunctions();
+          startStepFunctions("mobile20983487234","arn:aws:states:us-east-2:132260253285:stateMachine:MomoStateMachine");
         },
         child: Container(
           height: 60,

@@ -92,7 +92,169 @@ buildscript {
 }
 
 ```
+
+## Initialize Amplify 
+From the root of your application, run the command
+`amplify init`
+
+![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/f.png)
+
+Give your project a name. 
+When you installed and configured amplify cli, you created a profile. Please choose that profile when the cli prompts
+you to choose an authentication method.
+
+![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/g.png)
+
+You should see a similar screen once you are done.
+
+![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/h.png)
+
+Amplify creates a file called `amplifyconfiguration.dart` in the `libs` folder.
+
+We have to populate this config file with our backend configuration.
+
 ## Get Amplify Config From Appsync
+Open up Appsync on the aws console and navigate to your project.
+
+![alt text](https://raw.githubusercontent.com/trey-rosius/flutter_stepfunctions_apartment/master/assets/images/i.png)
+
+Download the configuration by clicking on the orange `Download Config` button.
+
+Now open up `amplifyconfiguration.dart` and fill in the details like so
+
+```dart
+const amplifyconfig = ''' {
+    "UserAgent": "aws-amplify-cli/2.0",
+    "Version": "1.0",
+    "api": {
+        "plugins": {
+            "awsAPIPlugin": {
+                "cdkMomoApi": {
+                    "endpointType": "GraphQL",
+                    "endpoint": "https://xxxxxxxxxxxxxxx.appsync-api.us-east-2.amazonaws.com/graphql",
+                    "region": "us-east-2",
+                    "authorizationType": "API_KEY",
+                    "apiKey":"da2-5pn6oexoxxxxxxxxx"
+                    
+                }
+            }
+        }
+    }
+}''';
+```
+Change the appsync name from `cdkMomoApi` to yours, alongside the rest of the details.
 
 ## Updating main.dart
 Open your `main.dart` file and initialize Amplify and Amplify API.
+
+```dart
+import 'package:apartment_complex/welcome_screen.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+// Amplify Flutter Packages
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:amplify_api/amplify_api.dart';
+
+// Generated in previous step
+import 'amplifyconfiguration.dart';
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+
+  Future<void> _configureAmplify() async {
+
+    // Add any Amplify plugins you want to use
+    final authPlugin =  AmplifyAPI();
+    await Amplify.addPlugin(authPlugin);
+
+    try {
+      await Amplify.configure(amplifyconfig);
+    } on AmplifyAlreadyConfiguredException {
+      if (kDebugMode) {
+        print("Tried to reconfigure Amplify; this can occur when your app restarts on Android.");
+      }
+    }
+  }
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _configureAmplify();
+  }
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Apartments',
+      theme: ThemeData(
+
+        primarySwatch: Colors.blue,
+      ),
+      home: const WelcomeScreen(),
+    );
+  }
+}
+
+
+```
+
+## GraphQL Mutation
+Remember our graphql mutation expects an ID and the step functions arn. Here's how to create a Graphql mutation in flutter with Amplify.
+
+```dart
+ Future<void> startStepFunctions(String id, String arn) async {
+    try{
+      String graphqlDoc =
+          '''
+          mutation add(\$id:ID!
+                        \$arn:String!) {
+  addStepFunction(input: {id: \$id, arn: \$arn}) {
+    id
+    arn
+  }
+}
+          
+          ''';
+
+      var operation = Amplify.API.mutate(
+          request: GraphQLRequest<String>(
+            document: graphqlDoc,
+            apiName: "cdkMomoApi",
+            variables: {
+              "id":id,
+              "arn":arn
+            }
+
+      ));
+          var response = await operation.response;
+
+          var data = response.data;
+
+      if (kDebugMode) {
+        print('Mutation result is$data');
+        print('Mutation error: ${response.errors}');
+      }
+
+
+
+    }catch(ex){
+      if (kDebugMode) {
+        print(ex.toString());
+      }
+    }
+  }
+
+
+```
+Please grab the complete code and try it out.
+
