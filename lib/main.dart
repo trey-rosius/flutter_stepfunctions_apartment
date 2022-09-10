@@ -45,10 +45,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Apartments',
-      theme: ThemeData(
+      title: 'Apartment Complex Management System',
 
-        primarySwatch: Colors.blue,
+      theme: ThemeData(
+        primaryColor: const Color(0xFFfedd69),
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xFF232529))
+
       ),
       home: const WelcomeScreen(),
     );

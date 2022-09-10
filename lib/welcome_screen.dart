@@ -43,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) =>HomeScreen()));
                 },
-                child: const Text("Get Started",style: TextStyle(color: Colors.black,
+                child: const Text("Get Started",style: TextStyle(color: Theme,
                   fontFamily: 'lobster',
                   fontSize: 20,),),
               ),

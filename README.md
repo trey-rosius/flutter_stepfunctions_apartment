@@ -258,3 +258,12 @@ Remember our graphql mutation expects an ID and the step functions arn. Here's h
 ```
 Please grab the complete code and try it out.
 
+## Conclusion
+In this series, we looked at how to create and invoke a step functions workflow through
+- The AWS Console
+- Using CDK for Infrastructure as Code
+- Using SAM for Infrastructure as Code
+- Using Amplify and flutter
+
+Hope you enjoyed it. I'll love to know your thoughts on this series and Step functions as a whole.
+Cheers!!
